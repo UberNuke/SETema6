@@ -104,11 +104,7 @@ public class WeatherController implements IController {
     		this.model.setTemperature(temp);
     		this.model.setWindSpeed(speed);
     		this.model.setLocation(location);
-    	}
-    	
-    	
-    	
-    	
+    	}    	
     }
     
     /**
