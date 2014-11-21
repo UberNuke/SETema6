@@ -14,8 +14,9 @@ import myweather.interfaces.*;
  */
 public class WeatherModel {
 	
-	private int windSpeed;
-	private int temperature;
+	private float windSpeed;
+	private float temperature;
+	private String location = "??"; 
 	
 	private List<IModelListener> mListeners;
 	
@@ -29,17 +30,28 @@ public class WeatherModel {
 	}
 	
 	
-	public int getWindSpeed() {
+	public float getWindSpeed() {
 		return windSpeed;
 	}
-	public void setWindSpeed(int windSpeed) {
+	public String getLocation() {
+		return location;
+	}
+
+
+	public void setLocation(String location) {
+		this.location = location;
+		notifyListeners();
+	}
+
+
+	public void setWindSpeed(float windSpeed) {
 		this.windSpeed = windSpeed;
 		notifyListeners();
 	}
-	public int getTemperature() {
+	public float getTemperature() {
 		return temperature;
 	}
-	public void setTemperature(int temperature) {
+	public void setTemperature(float temperature) {
 		this.temperature = temperature;
 		notifyListeners();
 	}

@@ -18,6 +18,7 @@ public class WeatherView extends JFrame implements IModelListener, IView{
 	private static final long serialVersionUID = 1L;
 	
 	private JButton updateButton = new JButton("Update");
+	private JLabel locationLabel = new JLabel("Location: ");
 	private JLabel tempLabel = new JLabel("Temperature: ");
 	private JLabel windSpeedLabel = new JLabel("Wind Speed:");
 	
@@ -28,7 +29,8 @@ public class WeatherView extends JFrame implements IModelListener, IView{
 		// Layout the components.
 		JPanel content = new JPanel();
         content.setLayout(new FlowLayout());
-        content.add(this.tempLabel);
+        content.add(this.locationLabel);
+        content.add(this.tempLabel);       
         content.add(this.windSpeedLabel);
         content.add(this.updateButton);
         
@@ -48,8 +50,9 @@ public class WeatherView extends JFrame implements IModelListener, IView{
      */
     public void addModel(WeatherModel model) {
         this.model = model;
-        this.tempLabel.setText("Temperature: " + this.model.getTemperature() + "km/h.");
-        this.windSpeedLabel.setText("Wind Speed: " + this.model.getWindSpeed() + "C.");
+        this.locationLabel.setText("Location: " + this.model.getLocation());
+        this.tempLabel.setText("Temperature: " + this.model.getTemperature() + " C." );
+        this.windSpeedLabel.setText("Wind Speed: " + this.model.getWindSpeed() + " km/h.");
         this.pack();
     }
     
@@ -70,8 +73,9 @@ public class WeatherView extends JFrame implements IModelListener, IView{
 
     @Override
     public void onUpdate() {
-    	this.tempLabel.setText("Temperature: " + this.model.getTemperature() + "km/h.");
-        this.windSpeedLabel.setText("Wind Speed: " + this.model.getWindSpeed() + "C.");
+    	this.locationLabel.setText("Location: " + this.model.getLocation());
+        this.tempLabel.setText("Temperature: " + this.model.getTemperature() + " C." );
+        this.windSpeedLabel.setText("Wind Speed: " + this.model.getWindSpeed() + " km/h.");
         this.pack();
     }
 }
